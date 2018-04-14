@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="testdb@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="information_schema"/>
+    <schema id="3" parent="1" name="mysql"/>
+    <schema id="4" parent="1" name="performance_schema"/>
+    <schema id="5" parent="1" name="sakila"/>
+    <schema id="6" parent="1" name="sys"/>
+    <schema id="7" parent="1" name="world"/>
+    <schema id="8" parent="1" name="testdb">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <table id="9" parent="8" name="admin"/>
+    <table id="10" parent="8" name="level"/>
+    <table id="11" parent="8" name="mgenre"/>
+    <table id="12" parent="8" name="music"/>
+    <table id="13" parent="8" name="musiccontain"/>
+    <table id="14" parent="8" name="playlist"/>
+    <table id="15" parent="8" name="user">
+      <Comment>usertable</Comment>
+    </table>
+    <column id="16" parent="9" name="ADMID">
+      <Position>1</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="17" parent="9" name="ADMPSWD">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="18" parent="9" name="ADMSSN">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="19" parent="9" name="ADMID_UNIQUE">
+      <ColNames>ADMID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="20" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ADMSSN</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="21" parent="9" name="ADMID_UNIQUE">
+      <ColNames>ADMID</ColNames>
+      <UnderlyingIndexName>ADMID_UNIQUE</UnderlyingIndexName>
+    </key>
+    <column id="22" parent="10" name="LNAME">
+      <Position>1</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="10" name="LID">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="10" name="LMANAGE">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="25" parent="10" name="LMANAGE_idx">
+      <ColNames>LMANAGE</ColNames>
+    </index>
+    <key id="26" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>LID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="27" parent="10" name="LMANAGE">
+      <ColNames>LMANAGE</ColNames>
+      <RefSchemaName>testdb</RefSchemaName>
+      <RefTableName>admin</RefTableName>
+      <RefColNames>ADMSSN</RefColNames>
+    </foreign-key>
+    <column id="28" parent="11" name="MMID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="11" name="MGENRE">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="30" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>MMID
+MGENRE</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="31" parent="11" name="MMID">
+      <ColNames>MMID</ColNames>
+      <RefSchemaName>testdb</RefSchemaName>
+      <RefTableName>music</RefTableName>
+      <RefColNames>MID</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="32" parent="12" name="MID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="12" name="MNAME">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="34" parent="12" name="MSINGER">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="35" parent="12" name="MLIKE">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="36" parent="12" name="MMANAGE">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="37" parent="12" name="MLYRIC">
+      <Position>6</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <index id="38" parent="12" name="MMANAGE_idx">
+      <ColNames>MMANAGE</ColNames>
+    </index>
+    <key id="39" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>MID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="40" parent="12" name="MMANAGE">
+      <ColNames>MMANAGE</ColNames>
+      <RefSchemaName>testdb</RefSchemaName>
+      <RefTableName>admin</RefTableName>
+      <RefColNames>ADMSSN</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="41" parent="13" name="CPID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="13" name="CMID">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="43" parent="13" name="CMID_idx">
+      <ColNames>CMID</ColNames>
+    </index>
+    <key id="44" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CPID
+CMID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="45" parent="13" name="playlistid">
+      <ColNames>CPID</ColNames>
+      <RefSchemaName>testdb</RefSchemaName>
+      <RefTableName>playlist</RefTableName>
+      <RefColNames>PID</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="46" parent="13" name="CMID">
+      <ColNames>CMID</ColNames>
+      <RefSchemaName>testdb</RefSchemaName>
+      <RefTableName>music</RefTableName>
+      <RefColNames>MID</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="47" parent="14" name="PID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="48" parent="14" name="PNUM">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="49" parent="14" name="POWNER">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="50" parent="14" name="POWNER_idx">
+      <ColNames>POWNER</ColNames>
+    </index>
+    <key id="51" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>PID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="52" parent="14" name="POWNER">
+      <ColNames>POWNER</ColNames>
+      <RefSchemaName>testdb</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>SSN</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="53" parent="15" name="NAME">
+      <Position>1</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="15" name="SEX">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="55" parent="15" name="SSN">
+      <Position>3</Position>
+      <DataType>int(13)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="15" name="ID">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="57" parent="15" name="PSWD">
+      <Position>5</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="58" parent="15" name="UMANAGE">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="59" parent="15" name="ID_UNIQUE">
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="60" parent="15" name="UMANAGE_idx">
+      <ColNames>UMANAGE</ColNames>
+    </index>
+    <key id="61" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>SSN</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="62" parent="15" name="ID_UNIQUE">
+      <ColNames>ID</ColNames>
+      <UnderlyingIndexName>ID_UNIQUE</UnderlyingIndexName>
+    </key>
+    <foreign-key id="63" parent="15" name="adminssn">
+      <ColNames>UMANAGE</ColNames>
+      <RefSchemaName>testdb</RefSchemaName>
+      <RefTableName>admin</RefTableName>
+      <RefColNames>ADMSSN</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+  </database-model>
+</dataSource>
